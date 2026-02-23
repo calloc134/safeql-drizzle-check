@@ -21,6 +21,7 @@
     "@types/node": "^20.19.33",
     "drizzle-kit": "latest",
     "eslint": "^9.39.3",
+    "jiti": "^2.6.1",
     "libpg-query": "^17.7.3",
     "tsx": "^4.0.0",
     "typescript": "^5.0.0",

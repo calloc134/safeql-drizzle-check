@@ -1,27 +1,28 @@
-// eslint.config.mjs
-// @ts-check
-
 import eslint from "@eslint/js";
-import { defineConfig } from "eslint/config";
 import tseslint from "typescript-eslint";
 import safeql from "@ts-safeql/eslint-plugin/config";
+import dotenv from "dotenv";
 
-export default defineConfig(
+dotenv.config();
+
+export default tseslint.config(
   eslint.configs.recommended,
   tseslint.configs.recommended,
+
+  // 型情報を使う設定は TS ファイルに限定（設定ファイル等で projectService エラーを出さない）
   {
+    files: ["**/*.{ts,tsx,mts,cts}"],
     languageOptions: {
       parserOptions: {
         projectService: true,
+        tsconfigRootDir: import.meta.dirname,
       },
     },
   },
+
   safeql.configs.connections({
-    // 例: 環境変数で渡す（推奨）
     databaseUrl:
       process.env.DATABASE_URL ?? "postgres://user:pass@localhost:5432/dbname",
-
-    // drizzle-orm の `sql` タグを検査対象にする
     targets: [{ wrapper: "db.execute" }],
   }),
 );
