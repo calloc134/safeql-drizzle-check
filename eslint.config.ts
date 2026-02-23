@@ -23,6 +23,14 @@ export default tseslint.config(
   safeql.configs.connections({
     databaseUrl:
       process.env.DATABASE_URL ?? "postgres://user:pass@localhost:5432/dbname",
-    targets: [{ wrapper: "db.execute" }],
+    targets: [{ wrapper: { regex: "(db|tx)\\.execute" } }],
+    overrides: {
+      types: {
+        date: "string",
+        // DBクライアントがこれらも string で返すなら追加
+        timestamp: "string",
+        timestamptz: "string",
+      },
+    },
   }),
 );
