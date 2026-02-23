@@ -9,7 +9,7 @@
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "seed": "tsx src/seed.ts",
-    "query": "tsx src/query.ts"
+    "query": "tsx src/main.ts"
   },
   "dependencies": {
     "dotenv": "^16.0.0",
