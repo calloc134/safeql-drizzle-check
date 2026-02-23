@@ -14,7 +14,8 @@
   "dependencies": {
     "dotenv": "^16.0.0",
     "drizzle-orm": "latest",
-    "postgres": "^3.0.0"
+    "postgres": "^3.0.0",
+    "valibot": "^1.2.0"
   },
   "devDependencies": {
     "@ts-safeql/eslint-plugin": "^4.2.0",
